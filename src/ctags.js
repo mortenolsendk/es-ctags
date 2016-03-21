@@ -22,8 +22,8 @@ const SPECIAL_FIELDS = {
 
 module.exports = function (tags) {
   return tags.map(tag => {
-    const buf = [tag.name, '\t', tags.tagfile, '\t']
-    buf.push(tag.addr !== undefined ? path.relative(process.cwd(), tag.addr) : '//')
+    const buf = [tag.name, '\t', path.relative(process.cwd(), tags.tagfile), '\t']
+    buf.push(tag.addr !== undefined ? tag.addr : '//')
     const tagfields = []
 
     Object.keys(tag).forEach(function (key) {
